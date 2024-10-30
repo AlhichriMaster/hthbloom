@@ -46,15 +46,11 @@ const ViewFeedback = () => {
     fetchFeedback();
   }, [currentUser]);
 
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
-
   // Convert Firestore Timestamp to readable date string
   const formatValue = (value) => {
     if (value?.seconds && value?.nanoseconds) {
       const date = new Date(value.seconds * 1000);
-      return date.toLocaleString(); // You can customize this format
+      return date.toLocaleString();
     }
     return value;
   };
@@ -63,7 +59,7 @@ const ViewFeedback = () => {
   const chartData = {};
   feedbackData.forEach((feedback) => {
     for (let key in feedback) {
-      if (typeof feedback[key] === 'number') { // Assuming close-ended questions have numeric values
+      if (typeof feedback[key] === 'number') {
         if (!chartData[key]) {
           chartData[key] = [];
         }
@@ -92,31 +88,52 @@ const ViewFeedback = () => {
     datasets: chartDatasets,
   };
 
+  if (loading) {
+    return (
+      <div className="page-wrapper">
+        <div className="content-container">
+          <div className="centered">
+            <h3>Loading feedback data...</h3>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="page-wrapper">
+        <div className="content-container">
+          <div className="error">{error}</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="page-wrapper">
       <div className="content-container idk">
-
         <h2>Feedback Forum</h2>
 
         <h3>Feedback Responses:</h3>
         <div>
           {feedbackData.length > 0 ? (
             feedbackData.map((feedback, index) => (
-              <div key={index}>
+              <div key={index} className="feedback-item">
                 <h4>Feedback {index + 1}</h4>
                 <ul>
                   {Object.entries(feedback)
-                    .filter(([question]) => question !== 'submittedAt') // Filter out the date field
+                    .filter(([question]) => question !== 'submittedAt')
                     .map(([question, response], i) => (
                       <li key={i}>
                         <strong>{question}:</strong> {typeof response === 'object' ? formatValue(response) : response}
                       </li>
-                  ))}
+                    ))}
                 </ul>
               </div>
             ))
           ) : (
-            <div>No feedback available.</div>
+            <div className="no-data">No feedback available.</div>
           )}
         </div>
 
@@ -139,10 +156,9 @@ const ViewFeedback = () => {
               }}
             />
           ) : (
-            <div>No data available for charts.</div>
+            <div className="no-data">No data available for charts.</div>
           )}
         </div>
-
       </div>
     </div>
   );

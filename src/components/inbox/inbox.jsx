@@ -77,7 +77,19 @@ const Inbox = () => {
     };
 
     fetchReportsAndEmails();
-  }, [currentUser]);
+  }, [currentUser, navigate]);
+
+  if (loading) {
+    return (
+      <div className="page-wrapper">
+        <div className="content-container">
+          <div className="notification centered">
+            <h3>Loading...</h3>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='page-wrapper'>
@@ -91,7 +103,9 @@ const Inbox = () => {
                 <li key={report.reportId} className='centered'>
                   <button
                     key={report.reportId}
-                    onClick={() => navigate('/form', { state: { reportId: report.reportId } })} className='btn-lg'>
+                    onClick={() => navigate('/form', { state: { reportId: report.reportId } })} 
+                    className='btn-lg'
+                  >
                     Fill out form for {report.email}
                   </button>
                 </li>
@@ -99,7 +113,9 @@ const Inbox = () => {
             </ul>
           </div>
         ) : (
-          <div>You have requested documents</div>
+          <div className="notification centered">
+            <h3>No pending reports to fill out</h3>
+          </div>
         )}
       </div>
     </div>
