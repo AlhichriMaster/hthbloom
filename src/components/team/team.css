@@ -1,0 +1,73 @@
+/* team.css */
+
+/* Ensures the content is pushed down from the header */
+.team-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    padding: 75px 20px;
+}
+
+/* Heading styles */
+.team-container h1 {
+    font-size: 2em;
+    color: #333; /* Darker color for better readability */
+    margin-bottom: 20px;
+}
+
+.team-container h2 {
+    font-size: 1.5em;
+    color: #555; /* Slightly lighter than the main header */
+    margin: 15px 0 10px;
+}
+
+/* List styles */
+.team-container ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+}
+
+.team-container li {
+    background-color: #e1e1e1; /* Light gray background for list items */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px;
+    margin: 5px 0; /* Space between list items */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+/* Hover effect for list items */
+.team-container li:hover {
+    background-color: #d1d1d1; /* Darker gray on hover */
+}
+
+/* Message for no teams */
+.no-teams-message {
+    font-size: 1.2em;
+    color: #777; /* Light gray for less emphasis */
+}
+
+
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    padding-top: 100px;
+    padding-bottom: 100px;  
+  }
+  
+  
+  .centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
