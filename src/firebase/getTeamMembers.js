@@ -1,5 +1,5 @@
-import { auth, db } from "./firebase";
-import { doc, setDoc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
+import {db } from "./firebase";
+import { doc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
 
 export const getTeamMembers = async (user) => {
 

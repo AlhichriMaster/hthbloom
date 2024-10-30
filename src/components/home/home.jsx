@@ -87,6 +87,10 @@ const Home = () => {
     return <Root />;
   }
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="dashboard-container">
       <motion.h2
@@ -94,7 +98,7 @@ const Home = () => {
         animate = {{ y: 0}}
         transition={{type: 'tween' , stiffness: 5}}
       > Welcome, {currentUser?.displayName || currentUser?.email}! </motion.h2 >
-      <div class = "home-nav">
+      <div className="home-nav">
         {error && <div className="error-message">{error}</div>}
         <div className="card-container">
           <motion.div className="card"
@@ -104,7 +108,7 @@ const Home = () => {
           >
             <h3>Feedback</h3>
             <p>Review your feedback to self improve</p>
-            <Link className="card-button" to={'/view-feedback'}><i class="bi bi-chat-left-text-fill"></i></Link>
+            <Link className="card-button" to={'/view-feedback'}><i className="bi bi-chat-left-text-fill"></i></Link>
           </motion.div>
 
           <motion.div className="card"
@@ -114,7 +118,7 @@ const Home = () => {
           >
             <h3>Request Feedback</h3>
             <p>Request anonymous feedback from your team</p>
-            <button onClick={() => requestFeedback(currentUser)}><i class="bi bi-rocket-takeoff-fill request-feedback"></i></button>
+            <button onClick={() => requestFeedback(currentUser)}><i className="bi bi-rocket-takeoff-fill request-feedback"></i></button>
           </motion.div>
 
           <motion.div className="card"
@@ -124,7 +128,7 @@ const Home = () => {
           >
             <h3>Inbox</h3>
             <p>Fill out requested feedback forms</p>
-            <Link className="card-button" to={'/inbox'}><i class="bi bi-inbox-fill"></i></Link>
+            <Link className="card-button" to={'/inbox'}><i className="bi bi-inbox-fill"></i></Link>
           </motion.div>
 
           <motion.div className="card"
@@ -138,7 +142,7 @@ const Home = () => {
                 ? (
                   <>
                     <p>View your team</p>
-                    <Link className="card-button" to={'/team'}><i class="bi bi-cup-hot-fill"></i></Link>
+                    <Link className="card-button" to={'/team'}><i className="bi bi-cup-hot-fill"></i></Link>
                   </>
                 )
                 : 

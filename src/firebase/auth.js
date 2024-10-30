@@ -3,9 +3,6 @@ import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  sendEmailVerification,
-  updatePassword,
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";

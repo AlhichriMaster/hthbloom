@@ -1,4 +1,4 @@
-import { auth, db } from "./firebase";
+import { db } from "./firebase";
 import { doc, setDoc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
 
 export const requestFeedback = async (user) => {
